@@ -1,3 +1,4 @@
+//! tes
 //! Simple usage of using `axum_template` with the `handlebars` crate
 //!
 //! Run the example using
