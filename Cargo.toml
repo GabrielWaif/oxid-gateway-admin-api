@@ -1,0 +1,68 @@
+[package]
+name = "oxid-gateway"
+version = "2.2.0"
+edition = "2021"
+description = "Oxid Gateway"
+
+[package.metadata.docs.rs]
+all-features = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1"
+thiserror = "1"
+
+# Supported template engines
+tera = { version = "1.19.0", optional = true, default-features = false }
+handlebars = { version = "5.0.0", optional = true, default-features = false }
+minijinja = { version = "1.0.12", optional = true, default-features = false }
+minijinja-autoreload = { version = "1.0.12", optional = true, default-features = false }
+
+[dependencies.axum]
+version = "0.7.1"
+default-features = false
+features = ["matched-path"]
+
+[dev-dependencies]
+tokio = { version = "1.22.0", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+tower-http = { version = "0.5.0", features = ["full"] }
+tower = { version = "0.4.13", features = ["full"] }
+axum = { version = "0.7.1", features = ["macros", "tokio"] }
+rstest = "0.18.0"
+speculoos = "0.11.0"
+anyhow = "1.0.61"
+hyper = "1.0.1"
+rand = "0.8.5"
+
+[[example]]
+name = "tera"
+required-features = ["tera"]
+
+[[example]]
+name = "handlebars"
+required-features = ["handlebars"]
+
+[[example]]
+name = "minijinja"
+required-features = ["minijinja"]
+
+[[example]]
+name = "minijinja-autoreload"
+required-features = ["minijinja-autoreload", "minijinja-autoreload/watch-fs", "minijinja", "minijinja/loader"]
+
+[[example]]
+name = "custom_key"
+required-features = ["tera"]
+
+[[example]]
+name = "custom_engine"
+
+[[example]]
+name = "nested"
+required-features = ["handlebars"]
+
+[[example]]
+name = "dynamic_template"
+required-features = ["handlebars"]
